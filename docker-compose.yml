@@ -7,6 +7,8 @@ services:
     environment:
       SITE_URL: ${SITE_URL:-}
       OG_LANG: ${OG_LANG:-it}
+      PALETTE: ${PALETTE:-}
+      BACKGROUND: ${BACKGROUND:-}
     ports:
       - "8080:80"
     volumes:

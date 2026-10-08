@@ -8,10 +8,34 @@ DATA="$ROOT/content/data.json"
 OG_LANG="${OG_LANG:-it}"
 SITE_URL="${SITE_URL:-}"
 
+PALETTE="${PALETTE:-}"
+BACKGROUND="${BACKGROUND:-}"
+
+valid() {
+    case "$2" in ''|*[!a-z0-9-]*) return 1 ;; esac
+    case " $1 " in *" $2 "*) return 0 ;; esac
+    return 1
+}
+
+theme() {
+    for pair in "palette:$PALETTE" "background:$BACKGROUND"; do
+        key="${pair%%:*}" value="${pair#*:}"
+        [ -n "$value" ] || continue
+        options="$(sed -n "s/.*<meta name=\"cv-$key\" content=\"[^\"]*\" data-options=\"\([^\"]*\)\".*/\1/p" "$ROOT/index.html")"
+        if ! valid "$options" "$value"; then
+            echo "web-cv: $key '$value' non valido, resta quello predefinito (valori: $options)" >&2
+            continue
+        fi
+        sed -i "s|<meta name=\"cv-$key\" content=\"[^\"]*\"|<meta name=\"cv-$key\" content=\"$value\"|" "$ROOT/index.html"
+        echo "web-cv: $key $value"
+    done
+}
+
 cp "$TEMPLATE" "$ROOT/index.html"
 
 if ! jq empty "$DATA" 2>/tmp/jq-error; then
     echo "web-cv: $DATA non valido, meta tag non aggiornati: $(cat /tmp/jq-error)" >&2
+    theme
     exit 0
 fi
 
@@ -40,4 +64,5 @@ awk '
   { print }
 ' "$TEMPLATE" | sed "s/<html lang=\"[a-z]*\"/<html lang=\"$OG_LANG\"/" > "$ROOT/index.html"
 
+theme
 echo "web-cv: meta tag generati da $DATA (lingua $OG_LANG)"

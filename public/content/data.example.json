@@ -18,9 +18,7 @@
     },
     "avatar": "",
     "cv": "content/curriculum.pdf",
-    "ogImage": "",
-    "background": "terminal",
-    "palette": "graphite"
+    "ogImage": ""
   },
   "hero": {
     "greeting": {

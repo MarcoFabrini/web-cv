@@ -8,14 +8,16 @@
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Curriculum">
   <meta property="og:description" content="Curriculum online">
+  <meta name="cv-palette" content="graphite">
+  <meta name="cv-background" content="terminal">
   <meta name="theme-color" content="#121211">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23f5a524'/%3E%3Ctext x='16' y='22' font-size='17' font-family='Georgia' font-style='italic' text-anchor='middle' fill='%23121211'%3Ecv%3C/text%3E%3C/svg%3E">
   <script>
     try {
       var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       document.documentElement.dataset.theme = t;
-      var p = new URLSearchParams(location.search).get('palette') || localStorage.getItem('palette');
-      if (p) document.documentElement.dataset.palette = p;
+      var m = document.querySelector('meta[name=cv-palette]'), p = new URLSearchParams(location.search).get('palette');
+      document.documentElement.dataset.palette = p && (' ' + m.dataset.options + ' ').indexOf(' ' + p + ' ') >= 0 ? p : m.content;
     } catch (e) {}
   </script>
 </head>

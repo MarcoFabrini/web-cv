@@ -1,0 +1,21 @@
+:root[data-palette="rose"][data-theme="dark"] {
+  --bg: #141012;
+  --card: #1d171a;
+  --fg: #f0e8ea;
+  --mut: #9a8c91;
+  --line: #ffffff17;
+  --acc: #ff7a90;
+  --acc-fg: #141012;
+  --acc-text: #ff8fa2;
+}
+
+:root[data-palette="rose"][data-theme="light"] {
+  --bg: #faf3f2;
+  --card: #fffafa;
+  --fg: #221a1c;
+  --mut: #6f6064;
+  --line: #221a1c22;
+  --acc: #e5486a;
+  --acc-fg: #ffffff;
+  --acc-text: #c0304f;
+}

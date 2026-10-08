@@ -53,10 +53,8 @@ if (data.ai) {
   for (const path of ['ai.tools', 'ai.practices']) if (!Array.isArray(get(path))) errors.push(`${path}: manca o non è array`);
 }
 
-const choices = { 'meta.palette': ['graphite', 'acid'], 'meta.background': ['terminal', 'none'] };
-for (const [path, list] of Object.entries(choices)) {
-  const v = get(path);
-  if (v !== undefined && !list.includes(v)) errors.push(`${path}: "${v}" non valido, usa ${list.join(' | ')}`);
+for (const [key, env] of [['palette', 'PALETTE'], ['background', 'BACKGROUND']]) {
+  if (data.meta?.[key] !== undefined) warnings.push(`meta.${key}: non è più usato, imposta ${env} in .env`);
 }
 
 const walk = (v, path) => {

@@ -14,8 +14,12 @@ import Palette from './components/Palette.jsx';
 import Toast from './components/Toast.jsx';
 import Cursor from './components/Cursor.jsx';
 import Terminal from './components/Terminal.jsx';
+import { Aurora, Dots, Grid } from './components/Backdrops.jsx';
+import { BACKGROUNDS, choose } from './themes.js';
+import { PALETTES } from './palettes.js';
 
-const BACKGROUNDS = { terminal: Terminal };
+const BACKDROPS = { terminal: Terminal, grid: Grid, dots: Dots, aurora: Aurora };
+const setting = (name, list) => choose(new URLSearchParams(location.search).get(name) || document.querySelector(`meta[name=cv-${name}]`)?.content, list);
 
 const DATA_URLS = ['content/data.json', 'content/data.example.json'];
 const save = (k, v) => { try { localStorage.setItem(k, v); } catch {} };
@@ -31,8 +35,8 @@ export default function App() {
   const ctx = useMemo(() => ({ lang, t, ui: (k) => t(data?.ui[k]) }), [lang, t, data]);
   const notify = (text) => setToast({ text, id: Date.now() });
 
-  const [paletteOverride, setPaletteOverride] = useState(() => new URLSearchParams(location.search).get('palette'));
-  const colors = paletteOverride || data?.meta.palette || 'graphite';
+  const [colors, setColors] = useState(() => setting('palette', PALETTES));
+  const [backdrop, setBackdrop] = useState(() => setting('background', BACKGROUNDS));
 
   useEffect(() => {
     const root = document.documentElement;
@@ -43,7 +47,6 @@ export default function App() {
     const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='${v('--acc')}'/><text x='16' y='22' font-size='17' font-family='Georgia' font-style='italic' text-anchor='middle' fill='${v('--acc-fg')}'>cv</text></svg>`;
     document.querySelector('link[rel=icon]').href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
     save('theme', theme);
-    save('palette', colors);
   }, [theme, colors]);
 
   useEffect(() => {
@@ -96,13 +99,16 @@ export default function App() {
     { label: ctx.ui('toggleLang'), hint: 'IT/EN', run: toggleLang },
     ...(t(data.meta.cv) ? [{ label: ctx.ui('pdf'), hint: 'pdf', run: () => window.open(t(data.meta.cv), '_blank', 'noopener') }] : []),
     { label: ctx.ui('copyEmail'), hint: '@', run: copyEmail },
-    ...(import.meta.env.DEV ? ['acid', 'graphite'].map((p) => ({ label: `Palette: ${p}`, hint: 'dev', run: () => setPaletteOverride(p) })) : []),
+    ...(import.meta.env.DEV ? [
+      ...PALETTES.map((p) => ({ label: `Palette: ${p}`, hint: 'dev', run: () => setColors(p) })),
+      ...BACKGROUNDS.map((b) => ({ label: `Background: ${b}`, hint: 'dev', run: () => setBackdrop(b) })),
+    ] : []),
     ...data.contact.links.filter((l) => safeUrl(l.url)).map((l) => ({ label: l.label, hint: '↗', run: () => window.open(l.url, '_blank', 'noopener') })),
   ];
 
   return (
     <LangContext.Provider value={ctx}>
-      {(() => { const Bg = BACKGROUNDS[data.meta.background]; return Bg && <Bg data={data} />; })()}
+      {(() => { const Bg = BACKDROPS[backdrop]; return Bg && <Bg data={data} />; })()}
       <Cursor />
       <div className="grain" aria-hidden="true" />
       <div className="progress" aria-hidden="true" />
