@@ -1,0 +1,687 @@
+{
+  "meta": {
+    "name": "Monkey D. Luffy",
+    "initials": "ML",
+    "email": "luffy@example.com",
+    "location": {
+      "it": "Milano, Italia",
+      "en": "Milan, Italy"
+    },
+    "available": true,
+    "siteTitle": {
+      "it": "Monkey D. Luffy — Curriculum",
+      "en": "Monkey D. Luffy — Résumé"
+    },
+    "siteDescription": {
+      "it": "Sviluppatore full-stack e cloud: costruisco prodotti web veloci, accessibili e fatti per durare.",
+      "en": "Full-stack & cloud developer: I build fast, accessible web products made to last."
+    },
+    "avatar": "",
+    "cv": "content/curriculum.pdf",
+    "ogImage": "",
+    "background": "terminal",
+    "palette": "graphite"
+  },
+  "hero": {
+    "greeting": {
+      "it": "Ciao, sono",
+      "en": "Hi, I'm"
+    },
+    "roles": [
+      {
+        "it": "sviluppatore full-stack",
+        "en": "full-stack developer"
+      },
+      {
+        "it": "sviluppatore AI-assisted",
+        "en": "AI-assisted developer"
+      },
+      {
+        "it": "appassionato di cloud",
+        "en": "cloud enthusiast"
+      },
+      {
+        "it": "amante del codice pulito",
+        "en": "clean-code lover"
+      },
+      {
+        "it": "risolutore di problemi",
+        "en": "problem solver"
+      }
+    ],
+    "tagline": {
+      "it": "Trasformo idee in prodotti web veloci, accessibili e fatti per durare.",
+      "en": "I turn ideas into fast, accessible web products built to last."
+    },
+    "marquee": [
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "Docker",
+      "Kubernetes",
+      "Linux",
+      "PostgreSQL",
+      "CI/CD",
+      "React",
+      "Terraform",
+      "Nginx",
+      "Git"
+    ]
+  },
+  "about": {
+    "title": {
+      "it": "Chi sono",
+      "en": "About me"
+    },
+    "text": {
+      "it": [
+        "Sono uno sviluppatore con oltre sette anni di esperienza tra startup e aziende strutturate. Mi piace stare dove il codice incontra l'infrastruttura: dal pulsante sullo schermo al container che lo serve.",
+        "Credo nelle cose semplici che funzionano: poca magia, molta chiarezza, test dove servono. Fuori dal lavoro self-hosto servizi sul mio server, smonto gadget e cerco il caffè migliore della città."
+      ],
+      "en": [
+        "I'm a developer with over seven years of experience across startups and established companies. I like living where code meets infrastructure: from the button on the screen to the container that serves it.",
+        "I believe in simple things that work: little magic, lots of clarity, tests where they matter. Off the clock I self-host services on my own server, tinker with gadgets and hunt for the best coffee in town."
+      ]
+    },
+    "facts": [
+      {
+        "label": {
+          "it": "Base",
+          "en": "Based in"
+        },
+        "value": {
+          "it": "Milano, IT",
+          "en": "Milan, IT"
+        }
+      },
+      {
+        "label": {
+          "it": "Lavoro",
+          "en": "Work"
+        },
+        "value": {
+          "it": "Ibrido / Remoto",
+          "en": "Hybrid / Remote"
+        }
+      },
+      {
+        "label": {
+          "it": "Lingue",
+          "en": "Languages"
+        },
+        "value": {
+          "it": "Italiano, English, Español",
+          "en": "Italian, English, Spanish"
+        }
+      },
+      {
+        "label": {
+          "it": "Carburante",
+          "en": "Fuel"
+        },
+        "value": {
+          "it": "Espresso ☕",
+          "en": "Espresso ☕"
+        }
+      }
+    ]
+  },
+  "stats": [
+    {
+      "value": 7,
+      "suffix": "+",
+      "label": {
+        "it": "anni di esperienza",
+        "en": "years of experience"
+      }
+    },
+    {
+      "value": 32,
+      "suffix": "",
+      "label": {
+        "it": "progetti consegnati",
+        "en": "projects shipped"
+      }
+    },
+    {
+      "value": 12,
+      "suffix": "",
+      "label": {
+        "it": "tecnologie padroneggiate",
+        "en": "technologies mastered"
+      }
+    },
+    {
+      "value": 99.9,
+      "suffix": "%",
+      "label": {
+        "it": "uptime medio",
+        "en": "average uptime"
+      }
+    }
+  ],
+  "experience": {
+    "title": {
+      "it": "Esperienza",
+      "en": "Experience"
+    },
+    "items": [
+      {
+        "role": {
+          "it": "Senior Full-Stack Developer",
+          "en": "Senior Full-Stack Developer"
+        },
+        "company": "Nebula Labs",
+        "start": 2022,
+        "end": null,
+        "summary": {
+          "it": "Guido il frontend e l'infrastruttura di una piattaforma SaaS con 40k utenti.",
+          "en": "Leading frontend and infrastructure of a SaaS platform with 40k users."
+        },
+        "bullets": [
+          {
+            "it": "Migrato il monolite a container Docker, riducendo i tempi di deploy da 40 a 6 minuti.",
+            "en": "Migrated the monolith to Docker containers, cutting deploy time from 40 to 6 minutes."
+          },
+          {
+            "it": "Introdotto design system condiviso: -35% di codice UI duplicato.",
+            "en": "Introduced a shared design system: -35% duplicated UI code."
+          },
+          {
+            "it": "Mentoring di 4 sviluppatori junior.",
+            "en": "Mentored 4 junior developers."
+          }
+        ]
+      },
+      {
+        "role": {
+          "it": "Full-Stack Developer",
+          "en": "Full-Stack Developer"
+        },
+        "company": "Pixel & Co.",
+        "start": 2019,
+        "end": 2022,
+        "summary": {
+          "it": "Siti e web app per clienti retail e fintech.",
+          "en": "Websites and web apps for retail and fintech clients."
+        },
+        "bullets": [
+          {
+            "it": "Realizzate 15+ web app con React e Node.js.",
+            "en": "Built 15+ web apps with React and Node.js."
+          },
+          {
+            "it": "Portato il punteggio Lighthouse medio da 62 a 95.",
+            "en": "Raised the average Lighthouse score from 62 to 95."
+          }
+        ]
+      },
+      {
+        "role": {
+          "it": "Junior Web Developer",
+          "en": "Junior Web Developer"
+        },
+        "company": "Studio Aurora",
+        "start": 2017,
+        "end": 2019,
+        "summary": {
+          "it": "Primi passi professionali: HTML, CSS, PHP e tanta curiosità.",
+          "en": "First professional steps: HTML, CSS, PHP and plenty of curiosity."
+        },
+        "bullets": [
+          {
+            "it": "Sviluppo e manutenzione di oltre 20 siti vetrina.",
+            "en": "Developed and maintained 20+ showcase websites."
+          }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": {
+      "it": "Progetti",
+      "en": "Projects"
+    },
+    "all": {
+      "it": "Tutti",
+      "en": "All"
+    },
+    "items": [
+      {
+        "title": "HomeLab Dash",
+        "year": 2025,
+        "description": {
+          "it": "Dashboard per monitorare i servizi self-hosted: stato container, risorse e alert in tempo reale.",
+          "en": "Dashboard to monitor self-hosted services: container status, resources and real-time alerts."
+        },
+        "tags": [
+          "Docker",
+          "Node.js",
+          "Cloud"
+        ],
+        "link": "https://example.com",
+        "repo": "https://github.com/"
+      },
+      {
+        "title": "Web CV",
+        "year": 2026,
+        "description": {
+          "it": "Questo stesso sito: zero framework, dati da JSON, due lingue e due temi.",
+          "en": "This very site: zero frameworks, JSON-driven data, two languages and two themes."
+        },
+        "tags": [
+          "JavaScript",
+          "CSS",
+          "Docker"
+        ],
+        "link": "https://example.com",
+        "repo": "https://github.com/"
+      },
+      {
+        "title": "Tavolo Pronto",
+        "year": 2024,
+        "description": {
+          "it": "Prenotazioni per ristoranti con calendario live e notifiche. 200+ locali attivi.",
+          "en": "Restaurant booking with live calendar and notifications. 200+ active venues."
+        },
+        "tags": [
+          "React",
+          "TypeScript",
+          "PostgreSQL"
+        ],
+        "link": "https://example.com",
+        "repo": null
+      },
+      {
+        "title": "Pipeline Zen",
+        "year": 2023,
+        "description": {
+          "it": "Template CI/CD riutilizzabili che hanno uniformato i rilasci di 12 team.",
+          "en": "Reusable CI/CD templates that standardized releases across 12 teams."
+        },
+        "tags": [
+          "CI/CD",
+          "Terraform",
+          "Cloud"
+        ],
+        "link": null,
+        "repo": "https://github.com/"
+      },
+      {
+        "title": "Meteo Minimal",
+        "year": 2022,
+        "description": {
+          "it": "PWA meteo offline-first, 2 KB di JS critico e animazioni leggere.",
+          "en": "Offline-first weather PWA, 2 KB of critical JS and light animations."
+        },
+        "tags": [
+          "JavaScript",
+          "PWA",
+          "CSS"
+        ],
+        "link": "https://example.com",
+        "repo": "https://github.com/"
+      },
+      {
+        "title": "Bolletta Chiara",
+        "year": 2021,
+        "description": {
+          "it": "Tool che legge le bollette PDF e mostra i consumi in grafici comprensibili.",
+          "en": "Tool that parses PDF utility bills and shows usage in clear charts."
+        },
+        "tags": [
+          "Node.js",
+          "React",
+          "PostgreSQL"
+        ],
+        "link": null,
+        "repo": "https://github.com/"
+      }
+    ]
+  },
+  "ai": {
+    "title": {
+      "it": "Sviluppo con AI",
+      "en": "AI-assisted development"
+    },
+    "intro": {
+      "it": "Uso l'AI ogni giorno, ma con metodo: è un collega velocissimo che lavora dentro regole, strumenti e ambienti che preparo e mantengo io. L'obiettivo non è solo scrivere codice più in fretta, ma tenere il progetto manutenibile nel tempo.",
+      "en": "I use AI every day, but with a method: it is a very fast teammate working inside the rules, tools and environments I set up and maintain. The goal is not just writing code faster, but keeping the project maintainable over time."
+    },
+    "tools": [
+      {
+        "it": "Agenti AI",
+        "en": "AI agents"
+      },
+      {
+        "it": "Skill personalizzate",
+        "en": "Custom skills"
+      },
+      {
+        "it": "Context engineering",
+        "en": "Context engineering"
+      },
+      {
+        "it": "Istruzioni versionate",
+        "en": "Versioned instructions"
+      },
+      {
+        "it": "Integrazione strumenti",
+        "en": "Tool integration"
+      },
+      {
+        "it": "Review assistita",
+        "en": "Assisted code review"
+      },
+      {
+        "it": "Test automatici",
+        "en": "Automated tests"
+      },
+      {
+        "it": "Ambienti isolati",
+        "en": "Isolated environments"
+      }
+    ],
+    "session": [
+      "$ git switch -c feature/project-filters",
+      {
+        "it": "> leggi le convenzioni del progetto e proponi un piano",
+        "en": "> read the project conventions and propose a plan"
+      },
+      {
+        "it": "✓ piano: 6 task, 2 rischi segnalati",
+        "en": "✓ plan: 6 tasks, 2 risks flagged"
+      },
+      {
+        "it": "> implementa, poi applica la skill di review al diff",
+        "en": "> implement, then run the review skill on the diff"
+      },
+      {
+        "it": "✓ build ok · test verdi · review pulita",
+        "en": "✓ build ok · tests green · clean review"
+      },
+      "$ git commit -m \"feat: project filters\""
+    ],
+    "practices": [
+      {
+        "title": {
+          "it": "Contesto prima del codice",
+          "en": "Context before code"
+        },
+        "text": {
+          "it": "Istruzioni di progetto versionate nel repository, convenzioni e decisioni documentate: persone e AI ripartono sempre dallo stesso punto.",
+          "en": "Project instructions versioned in the repository, documented conventions and decisions: people and AI always start from the same place."
+        }
+      },
+      {
+        "title": {
+          "it": "Skill progettate e mantenute",
+          "en": "Skills designed and maintained"
+        },
+        "text": {
+          "it": "Implemento skill da zero per i compiti ripetuti e aggiorno e rifinisco quelle esistenti quando il progetto evolve: istruzioni riusabili e verificate, non prompt usa e getta.",
+          "en": "I build skills from scratch for recurring tasks, and update and refine existing ones as the project evolves: reusable, tested instructions instead of throwaway prompts."
+        }
+      },
+      {
+        "title": {
+          "it": "Agenti con ruoli chiari",
+          "en": "Agents with clear roles"
+        },
+        "text": {
+          "it": "Agenti dedicati a ricerca, implementazione e review, collegati agli strumenti esterni solo con i permessi strettamente necessari.",
+          "en": "Dedicated agents for research, implementation and review, connected to external tools with only the permissions they strictly need."
+        }
+      },
+      {
+        "title": {
+          "it": "Ambienti locali isolati",
+          "en": "Isolated local environments"
+        },
+        "text": {
+          "it": "Container riproducibili su una VM di sviluppo: l'AI esegue, testa e sbaglia senza toccare dati o sistemi reali.",
+          "en": "Reproducible containers on a development VM: AI can run, test and fail without touching real data or systems."
+        }
+      },
+      {
+        "title": {
+          "it": "Manutenibilità e verifica",
+          "en": "Maintainability and verification"
+        },
+        "text": {
+          "it": "Codice leggibile, test, build e revisione umana prima di ogni commit. Il progetto deve restare comprensibile anche senza AI, e la responsabilità del codice resta mia.",
+          "en": "Readable code, tests, builds and human review before every commit. The project must stay understandable without AI, and ownership of the code stays with me."
+        }
+      }
+    ]
+  },
+  "skills": {
+    "title": {
+      "it": "Competenze",
+      "en": "Skills"
+    },
+    "groups": [
+      {
+        "name": {
+          "it": "Frontend",
+          "en": "Frontend"
+        },
+        "items": [
+          {
+            "name": "JavaScript / TypeScript",
+            "level": 5
+          },
+          {
+            "name": "React",
+            "level": 4
+          },
+          {
+            "name": "HTML & CSS",
+            "level": 5
+          },
+          {
+            "name": "Accessibilità",
+            "level": 4
+          }
+        ]
+      },
+      {
+        "name": {
+          "it": "Backend",
+          "en": "Backend"
+        },
+        "items": [
+          {
+            "name": "Node.js",
+            "level": 5
+          },
+          {
+            "name": "PostgreSQL",
+            "level": 4
+          },
+          {
+            "name": "REST / GraphQL",
+            "level": 4
+          },
+          {
+            "name": "Python",
+            "level": 3
+          }
+        ]
+      },
+      {
+        "name": {
+          "it": "Cloud & DevOps",
+          "en": "Cloud & DevOps"
+        },
+        "items": [
+          {
+            "name": "Docker",
+            "level": 5
+          },
+          {
+            "name": "Kubernetes",
+            "level": 4
+          },
+          {
+            "name": "Linux / Nginx",
+            "level": 4
+          },
+          {
+            "name": "Terraform",
+            "level": 3
+          }
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": {
+      "it": "Formazione",
+      "en": "Education"
+    },
+    "items": [
+      {
+        "title": {
+          "it": "Laurea in Informatica",
+          "en": "BSc in Computer Science"
+        },
+        "place": {
+          "it": "Università degli Studi di Milano",
+          "en": "University of Milan"
+        },
+        "year": "2017"
+      },
+      {
+        "title": {
+          "it": "Certified Kubernetes Administrator",
+          "en": "Certified Kubernetes Administrator"
+        },
+        "place": {
+          "it": "Certificazione",
+          "en": "Certification"
+        },
+        "year": "2024"
+      },
+      {
+        "title": {
+          "it": "Docker Certified Associate",
+          "en": "Docker Certified Associate"
+        },
+        "place": {
+          "it": "Certificazione",
+          "en": "Certification"
+        },
+        "year": "2023"
+      }
+    ]
+  },
+  "contact": {
+    "title": {
+      "it": "Parliamone",
+      "en": "Let's talk"
+    },
+    "text": {
+      "it": "Hai un progetto, un'idea o una posizione aperta? Scrivimi: rispondo quasi sempre in giornata.",
+      "en": "Got a project, an idea or an open position? Drop me a line: I almost always reply the same day."
+    },
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/"
+      }
+    ]
+  },
+  "ui": {
+    "nav": {
+      "about": {
+        "it": "Chi sono",
+        "en": "About"
+      },
+      "experience": {
+        "it": "Esperienza",
+        "en": "Experience"
+      },
+      "projects": {
+        "it": "Progetti",
+        "en": "Projects"
+      },
+      "ai": {
+        "it": "AI",
+        "en": "AI"
+      },
+      "skills": {
+        "it": "Competenze",
+        "en": "Skills"
+      },
+      "education": {
+        "it": "Formazione",
+        "en": "Education"
+      },
+      "contact": {
+        "it": "Contatti",
+        "en": "Contact"
+      }
+    },
+    "present": {
+      "it": "Oggi",
+      "en": "Present"
+    },
+    "available": {
+      "it": "Disponibile per nuove opportunità",
+      "en": "Open to new opportunities"
+    },
+    "scroll": {
+      "it": "scorri",
+      "en": "scroll"
+    },
+    "email": {
+      "it": "Scrivimi una mail",
+      "en": "Send me an email"
+    },
+    "pdf": {
+      "it": "Scarica PDF",
+      "en": "Download PDF"
+    },
+    "visit": {
+      "it": "Visita",
+      "en": "Visit"
+    },
+    "code": {
+      "it": "Codice",
+      "en": "Code"
+    },
+    "palette": {
+      "it": "Cerca azioni…",
+      "en": "Search actions…"
+    },
+    "paletteHint": {
+      "it": "↑↓ naviga · ↵ esegui · esc chiudi",
+      "en": "↑↓ navigate · ↵ run · esc close"
+    },
+    "toggleTheme": {
+      "it": "Cambia tema",
+      "en": "Toggle theme"
+    },
+    "toggleLang": {
+      "it": "Switch to English",
+      "en": "Passa all'italiano"
+    },
+    "copied": {
+      "it": "Email copiata!",
+      "en": "Email copied!"
+    },
+    "copyEmail": {
+      "it": "Copia email",
+      "en": "Copy email"
+    },
+    "footer": {
+      "it": "Fatto a mano con HTML, CSS e JS. Dati da data.json.",
+      "en": "Handcrafted with HTML, CSS and JS. Data from data.json."
+    }
+  }
+}

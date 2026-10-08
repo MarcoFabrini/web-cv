@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    image: web-cv:latest
+    container_name: web-cv
+    restart: unless-stopped
+    environment:
+      SITE_URL: ${SITE_URL:-}
+      OG_LANG: ${OG_LANG:-it}
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public/content:/usr/share/nginx/html/content:ro

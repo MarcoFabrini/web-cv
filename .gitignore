@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.lando/
+.env
+public/content/*
+!public/content/.gitkeep
+!public/content/data.example.json

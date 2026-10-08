@@ -1,0 +1,8 @@
+.lando.yml
+.lando
+.git
+node_modules
+dist
+README.md
+.env
+scripts

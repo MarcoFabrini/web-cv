@@ -1,0 +1,20 @@
+services:
+  web:
+    ports: !reset []
+    environment:
+      SITE_URL: ${SITE_URL:-https://${DOMAIN}}
+    networks:
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_NETWORK:-traefik}
+      - traefik.http.routers.web-cv.rule=Host(`${DOMAIN:?imposta DOMAIN in .env}`)
+      - traefik.http.routers.web-cv.entrypoints=${TRAEFIK_ENTRYPOINT:-websecure}
+      - traefik.http.routers.web-cv.tls=true
+      - traefik.http.routers.web-cv.tls.certresolver=${TRAEFIK_CERTRESOLVER:-letsencrypt}
+      - traefik.http.services.web-cv.loadbalancer.server.port=80
+
+networks:
+  traefik:
+    name: ${TRAEFIK_NETWORK:-traefik}
+    external: true

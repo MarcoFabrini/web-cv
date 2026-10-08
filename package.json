@@ -1,0 +1,22 @@
+{
+  "name": "web-cv",
+  "private": true,
+  "version": "1.0.0",
+  "license": "Unlicense",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "check": "node tools/check-data.mjs",
+    "prebuild": "node tools/check-data.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.0.0"
+  }
+}
