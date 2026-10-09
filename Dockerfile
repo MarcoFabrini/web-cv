@@ -15,4 +15,4 @@ COPY --chmod=755 docker/40-web-cv-meta.sh /docker-entrypoint.d/
 COPY --from=build /app/dist /usr/share/nginx/html
 RUN mkdir -p /etc/web-cv && cp /usr/share/nginx/html/index.html /etc/web-cv/index.html
 EXPOSE 80
-HEALTHCHECK CMD wget -qO- http://localhost/ >/dev/null || exit 1
+HEALTHCHECK CMD wget -qO- http://127.0.0.1/ >/dev/null || exit 1
