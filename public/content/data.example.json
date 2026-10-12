@@ -458,78 +458,80 @@
       "it": "Competenze",
       "en": "Skills"
     },
-    "groups": [
+    "items": [
       {
-        "name": {
-          "it": "Frontend",
-          "en": "Frontend"
-        },
-        "items": [
-          {
-            "name": "JavaScript / TypeScript",
-            "level": 5
-          },
-          {
-            "name": "React",
-            "level": 4
-          },
-          {
-            "name": "HTML & CSS",
-            "level": 5
-          },
-          {
-            "name": "Accessibilità",
-            "level": 4
-          }
-        ]
+        "name": "JavaScript",
+        "logo": "content/example/skills/javascript.svg",
+        "level": 5
       },
       {
-        "name": {
-          "it": "Backend",
-          "en": "Backend"
-        },
-        "items": [
-          {
-            "name": "Node.js",
-            "level": 5
-          },
-          {
-            "name": "PostgreSQL",
-            "level": 4
-          },
-          {
-            "name": "REST / GraphQL",
-            "level": 4
-          },
-          {
-            "name": "Python",
-            "level": 3
-          }
-        ]
+        "name": "TypeScript",
+        "logo": "content/example/skills/typescript.svg",
+        "level": 4
       },
       {
-        "name": {
-          "it": "Cloud & DevOps",
-          "en": "Cloud & DevOps"
-        },
-        "items": [
-          {
-            "name": "Docker",
-            "level": 5
-          },
-          {
-            "name": "Kubernetes",
-            "level": 4
-          },
-          {
-            "name": "Linux / Nginx",
-            "level": 4
-          },
-          {
-            "name": "Terraform",
-            "level": 3
-          }
-        ]
+        "name": "React",
+        "logo": "content/example/skills/react.svg",
+        "level": 4
+      },
+      {
+        "name": "HTML",
+        "logo": "content/example/skills/html.svg",
+        "level": 5
+      },
+      {
+        "name": "CSS",
+        "logo": "content/example/skills/css.svg",
+        "level": 5
+      },
+      {
+        "name": "Node.js",
+        "logo": "content/example/skills/nodejs.svg",
+        "level": 5
+      },
+      {
+        "name": "PostgreSQL",
+        "logo": "content/example/skills/postgresql.svg",
+        "level": 4
+      },
+      {
+        "name": "GraphQL",
+        "logo": "content/example/skills/graphql.svg",
+        "level": 3
+      },
+      {
+        "name": "REST",
+        "level": 4
+      },
+      {
+        "name": "Python",
+        "logo": "content/example/skills/python.svg",
+        "level": 3
+      },
+      {
+        "name": "Docker",
+        "logo": "content/example/skills/docker.svg",
+        "level": 4
+      },
+      {
+        "name": "Kubernetes",
+        "logo": "content/example/skills/kubernetes.svg",
+        "level": 3
+      },
+      {
+        "name": "Linux",
+        "logo": "content/example/skills/linux.svg",
+        "level": 4
+      },
+      {
+        "name": "Nginx",
+        "logo": "content/example/skills/nginx.svg",
+        "level": 4
+      },
+      {
+        "name": "Terraform",
+        "logo": "content/example/skills/terraform.svg",
+        "level": 2
       }
     ]
   },

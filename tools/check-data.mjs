@@ -36,7 +36,7 @@ const required = {
   'meta.siteTitle': 'text', 'meta.siteDescription': 'text',
   'hero.greeting': 'text', 'hero.tagline': 'text', 'hero.roles': 'array', 'hero.marquee': 'array',
   'about.title': 'text', 'about.text': 'text', 'about.facts': 'array', stats: 'array',
-  'experience.items': 'array', 'projects.items': 'array', 'skills.groups': 'array',
+  'experience.items': 'array', 'projects.items': 'array', 'skills.title': 'text',
   'education.items': 'array', 'contact.links': 'array', 'ui.nav': 'object',
 };
 for (const [path, type] of Object.entries(required)) {
@@ -46,6 +46,14 @@ for (const [path, type] of Object.entries(required)) {
       : type === 'text' ? text$(v)
         : typeof v === type;
   if (!ok) errors.push(`${path}: manca o non è ${type === 'text' ? 'testo o {it, en}' : type}`);
+}
+
+const skills = data.skills?.items ?? data.skills?.groups;
+if (!Array.isArray(skills)) errors.push('skills.items: manca o non è array');
+else if (!data.skills.items) warnings.push('skills.groups: formato vecchio, i livelli non sono più mostrati; usa skills.items con name e logo');
+for (const [i, item] of (data.skills?.items ?? []).entries()) {
+  if (typeof item?.name !== 'string') errors.push(`skills.items[${i}].name: manca o non è string`);
+  if (item?.logo && !/^https?:/.test(item.logo) && !existsSync(join(root, item.logo))) warnings.push(`skills.items[${i}].logo: file "${item.logo}" non trovato in public/, al suo posto compare il nome`);
 }
 
 if (data.ai) {

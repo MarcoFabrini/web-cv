@@ -5,3 +5,4 @@ dist/
 public/content/*
 !public/content/.gitkeep
 !public/content/data.example.json
+!public/content/example/

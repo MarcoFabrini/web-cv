@@ -4,14 +4,26 @@ import { reduceMotion } from '../hooks.js';
 
 const slug = (s) => s.toLowerCase().replace(/\s+/g, '-');
 const bare = (u) => u.replace(/^(https?:\/\/(www\.)?|mailto:)/, '').replace(/\/$/, '');
+const year = (v) => Number(String(v).match(/\d{4}/)?.[0] ?? 0);
+
+function timeline({ experience, education }, t) {
+  const jobs = experience.items.map((x) => [x.start, `${t(x.role)} · ${x.company}`]);
+  const studies = (education?.items ?? []).map((e) => [e.year, `${t(e.title)} · ${t(e.place).split(' · ')[0]}`]);
+  const seen = new Set();
+  return [...jobs, ...studies]
+    .filter(([, what]) => !seen.has(what) && seen.add(what))
+    .sort((a, b) => year(b[0]) - year(a[0]))
+    .slice(0, 5)
+    .map(([when, what]) => [String(when), what]);
+}
 
 function screens(data, t) {
-  const { meta, hero, projects, experience, stats, contact } = data;
+  const { meta, hero, projects, stats, contact } = data;
   return [
     { tab: 'whoami', cmd: 'whoami', lines: [[meta.name, t(meta.location) || '']].concat(hero.roles.length ? [['', hero.roles.slice(0, 3).map(t).join(' · ')]] : []) },
     { tab: 'stack', cmd: 'cat stack.txt', grid: hero.marquee },
     { tab: 'projects', cmd: 'ls ~/projects', grid: projects.items.map((p) => `${slug(p.title)}/`) },
-    { tab: 'git log', cmd: 'git log --oneline', lines: experience.items.slice(0, 4).map((x) => [String(x.start), `${t(x.role)} · ${x.company}`]) },
+    { tab: 'git log', cmd: 'git log --oneline', lines: timeline(data, t) },
     { tab: 'uptime', cmd: 'uptime', lines: stats.map((s) => [`${s.value}${s.suffix || ''}`, t(s.label)]) },
     { tab: 'contact', cmd: 'cat contact.txt', lines: [['email', meta.email]].concat(contact.links.map((l) => [l.label.toLowerCase(), bare(l.url)])) },
   ].filter((s) => (s.grid || s.lines).length);

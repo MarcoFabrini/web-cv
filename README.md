@@ -12,11 +12,12 @@ Online résumé, frontend only: React + Vite, bilingual (IT/EN), dark/light them
 ```bash
 cp public/content/data.example.json public/content/data.json
 ```
-Tutti i tuoi contenuti stanno in `public/content/` (non versionata):
+Tutti i tuoi contenuti stanno in `public/content/` (non versionata, tranne l'esempio: `data.example.json` e la cartella `example/`):
 - Testi: `data.json`. I campi tradotti sono `{ "it": "...", "en": "..." }`. Senza `data.json` il sito usa l'esempio.
 - Foto/avatar (PNG trasparente): `avatar.png`, poi `meta.avatar: "content/avatar.png"`.
 - CV in PDF: `curriculum.pdf` (campo `meta.cv`). Se il file manca, il pulsante non compare.
 - Anteprima LinkedIn/social: immagine 1200×627 `og.png`, campo `meta.ogImage`.
+- Loghi delle competenze (globo nella sezione Competenze): un file SVG o PNG per competenza in `content/skills/`, poi `skills.items: [{ "name": "PHP", "logo": "content/skills/php.svg", "level": 3 }]`. `level` (da 1 a 5, facoltativo) compare come punti sotto il nome quando passi sopra il logo. I loghi vengono mostrati in un solo colore, quello del testo della palette. Senza `logo`, o se il file manca, sul globo compare il nome. Loghi pronti (CC0): [Simple Icons](https://simpleicons.org). L'esempio usa i loghi in `content/example/skills/`. Un logo largo (scritta orizzontale) diventa una pillola; usa un'immagine con sfondo trasparente.
 - Colori e sfondo: in `.env`, vedi [Palette e sfondo](#palette-e-sfondo).
 
 Controllo del file: `npm run check` (eseguito anche prima di ogni build).
@@ -99,11 +100,12 @@ Da lì in poi basta `docker compose up -d`.
 ```bash
 cp public/content/data.example.json public/content/data.json
 ```
-All your content lives in `public/content/` (not versioned):
+All your content lives in `public/content/` (not versioned, except the example: `data.example.json` and the `example/` folder):
 - Text: `data.json`. Translated fields are `{ "it": "...", "en": "..." }`. Without `data.json` the site falls back to the example.
 - Photo/avatar (transparent PNG): `avatar.png`, then set `meta.avatar: "content/avatar.png"`.
 - PDF résumé: `curriculum.pdf` (`meta.cv` field). If the file is missing, the button is hidden.
 - LinkedIn/social preview: 1200×627 image `og.png`, `meta.ogImage` field.
+- Skill logos (globe in the Skills section): one SVG or PNG file per skill in `content/skills/`, then `skills.items: [{ "name": "PHP", "logo": "content/skills/php.svg", "level": 3 }]`. `level` (1 to 5, optional) shows as dots under the name when you hover the logo. Logos are shown in a single color, the palette's text color. Without `logo`, or if the file is missing, the globe shows the name. Ready-made logos (CC0): [Simple Icons](https://simpleicons.org). The example uses the logos in `content/example/skills/`. A wide logo (horizontal wordmark) becomes a pill; use an image with a transparent background.
 - Colors and background: in `.env`, see [Palette and background](#palette-and-background).
 
 File check: `npm run check` (also runs before every build).
@@ -181,3 +183,7 @@ From then on, `docker compose up -d` is enough.
 ---
 
 [Unlicense](LICENSE): pubblico dominio, nessuna garanzia / public domain, no warranty.
+
+Crediti: il globo delle competenze usa [cobe](https://github.com/shuding/cobe) di Shu Ding, con licenza MIT; i loghi d'esempio vengono da [Simple Icons](https://simpleicons.org) (CC0). Testi completi in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+
+Credits: the skills globe uses [cobe](https://github.com/shuding/cobe) by Shu Ding, under the MIT License; the example logos come from [Simple Icons](https://simpleicons.org) (CC0). Full texts in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
