@@ -9,6 +9,8 @@ services:
       OG_LANG: ${OG_LANG:-it}
       PALETTE: ${PALETTE:-}
       BACKGROUND: ${BACKGROUND:-}
+      UMAMI_URL: ${UMAMI_URL:-}
+      UMAMI_ID: ${UMAMI_ID:-}
     ports:
       - "8080:80"
     volumes:

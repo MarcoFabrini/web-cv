@@ -78,6 +78,14 @@ Titolo, descrizione e immagine per le anteprime social vengono scritti nell'HTML
 
 Dopo ogni modifica a `.env` serve `docker compose up -d`: `restart` non rilegge le variabili.
 
+### Statistiche (Umami)
+Facoltative. Con un'istanza [Umami](https://umami.is) (self-hosted o cloud), imposta in `.env` l'indirizzo e l'ID del sito creato su Umami:
+```bash
+UMAMI_URL=https://stats.example.com
+UMAMI_ID=00000000-0000-0000-0000-000000000000
+```
+All'avvio del container lo script di Umami viene aggiunto alla pagina; se le variabili sono vuote non viene aggiunto nulla. Umami non usa cookie. Per distinguere le visite da LinkedIn, usa un link come `https://DOMAIN/?ref=linkedin`.
+
 ### Con Traefik
 Requisiti: Traefik già attivo, con una rete Docker esterna e un certresolver.
 ```bash
@@ -165,6 +173,14 @@ docker compose up -d --build     # http://localhost:8080
 Title, description and image for social previews are written into the HTML when the container starts: after changing them in `data.json`, run `docker compose restart`. Variables: `SITE_URL` (public URL, needed for `og:image`) and `OG_LANG` (`it` | `en`).
 
 After any change to `.env`, run `docker compose up -d`: `restart` does not reload variables.
+
+### Analytics (Umami)
+Optional. With an [Umami](https://umami.is) instance (self-hosted or cloud), set the address and the ID of the website created in Umami in `.env`:
+```bash
+UMAMI_URL=https://stats.example.com
+UMAMI_ID=00000000-0000-0000-0000-000000000000
+```
+When the container starts, the Umami script is added to the page; if the variables are empty nothing is added. Umami uses no cookies. To tell LinkedIn visits apart, use a link like `https://DOMAIN/?ref=linkedin`.
 
 ### With Traefik
 Requirements: Traefik already running, with an external Docker network and a certresolver.

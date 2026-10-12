@@ -10,6 +10,8 @@ SITE_URL="${SITE_URL:-}"
 
 PALETTE="${PALETTE:-}"
 BACKGROUND="${BACKGROUND:-}"
+UMAMI_URL="${UMAMI_URL:-}"
+UMAMI_ID="${UMAMI_ID:-}"
 
 valid() {
     case "$2" in ''|*[!a-z0-9-]*) return 1 ;; esac
@@ -31,10 +33,25 @@ theme() {
     done
 }
 
+analytics() {
+    [ -n "$UMAMI_URL$UMAMI_ID" ] || return 0
+    url="${UMAMI_URL%/}" id="$UMAMI_ID"
+    case "$url" in http://*|https://*) ;; *) url="" ;; esac
+    case "$url" in *[!A-Za-z0-9.:/-]*) url="" ;; esac
+    case "$id" in *[!0-9A-Fa-f-]*) id="" ;; esac
+    if [ -z "$url" ] || [ -z "$id" ]; then
+        echo "web-cv: UMAMI_URL o UMAMI_ID non validi, statistiche disattivate" >&2
+        return 0
+    fi
+    sed -i "s|</head>|  <script defer src=\"$url/script.js\" data-website-id=\"$id\"></script>\n</head>|" "$ROOT/index.html"
+    echo "web-cv: statistiche Umami attive ($url)"
+}
+
 cp "$TEMPLATE" "$ROOT/index.html"
 
 if ! jq empty "$DATA" 2>/tmp/jq-error; then
     echo "web-cv: $DATA non valido, meta tag non aggiornati: $(cat /tmp/jq-error)" >&2
+    analytics
     theme
     exit 0
 fi
@@ -64,5 +81,6 @@ awk '
   { print }
 ' "$TEMPLATE" | sed "s/<html lang=\"[a-z]*\"/<html lang=\"$OG_LANG\"/" > "$ROOT/index.html"
 
+analytics
 theme
 echo "web-cv: meta tag generati da $DATA (lingua $OG_LANG)"

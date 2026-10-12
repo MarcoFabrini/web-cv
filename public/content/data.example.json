@@ -680,8 +680,8 @@
       "en": "Copy email"
     },
     "footer": {
-      "it": "Fatto a mano con HTML, CSS e JS. Dati da data.json.",
-      "en": "Handcrafted with HTML, CSS and JS. Data from data.json."
+      "it": "Fatto con React e Vite. Dati da data.json.",
+      "en": "Built with React and Vite. Data from data.json."
     }
   }
 }
