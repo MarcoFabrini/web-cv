@@ -284,13 +284,13 @@ section.s { padding-block: clamp(4rem, 10vw, 8rem); }
 .globe-logo.wide::before { width: min(calc(var(--r) * .8rem), 6rem); height: auto; aspect-ratio: var(--r); }
 .globe-logo.txt { width: auto; aspect-ratio: auto; padding: .3rem .65rem; border-radius: 99px; font: .72rem var(--mono); white-space: nowrap; }
 .globe-logo.txt::before { display: none; }
-.globe-logo:hover, .globe-logo.on { z-index: 1; border-color: var(--acc); }
-.globe-logo:hover::before, .globe-logo.on::before { background: var(--acc-text); }
+.globe:not(.drag) .globe-logo:hover, .globe-logo.on { z-index: 1; border-color: var(--acc); }
+.globe:not(.drag) .globe-logo:hover::before, .globe-logo.on::before { background: var(--acc-text); }
 .globe-tip { position: absolute; top: calc(100% + .5rem); left: 50%; translate: -50% .25rem; display: grid; justify-items: center; gap: .35rem;
   padding: .45rem .65rem; border-radius: 8px; background: var(--fg); color: var(--bg); box-shadow: 0 6px 18px #0003;
   font: .74rem var(--mono); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s, translate .2s var(--ease); }
 .globe-tip b { font-weight: 600; }
-.globe-logo:hover .globe-tip, .globe-logo.on .globe-tip { opacity: 1; translate: -50% 0; }
+.globe:not(.drag) .globe-logo:hover .globe-tip, .globe-logo.on .globe-tip { opacity: 1; translate: -50% 0; }
 .globe-tip .dots { display: flex; gap: .25rem; }
 .globe-tip .dots i { width: .5rem; height: .5rem; border-radius: 50%; border: 1.5px solid currentColor; opacity: .55; }
 .globe-tip .dots i.f { background: var(--acc); border-color: var(--acc); opacity: 1; }

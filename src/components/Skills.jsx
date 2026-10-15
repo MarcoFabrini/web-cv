@@ -83,6 +83,7 @@ function Globe({ items }) {
     el.append(canvas);
     const spin = reduceMotion() ? 0 : 0.18;
     let phi = 0, theta = 0.2, drag = null, held = false, raf = 0, last = 0, visible = false;
+    let toPhi = phi, toTheta = theta;
     const globe = createGlobe(canvas, {
       devicePixelRatio: Math.min(devicePixelRatio || 1, 2),
       width: el.clientWidth || 1, height: el.clientWidth || 1,
@@ -93,10 +94,16 @@ function Globe({ items }) {
 
     const frame = (now) => {
       raf = 0;
-      if (!drag && !held && !pinned.current) phi += spin * Math.min(now - (last || now), 50) / 1000;
+      const dt = Math.min(now - (last || now), 50);
       last = now;
+      const free = !drag && !held && !pinned.current;
+      if (free) toPhi += spin * dt / 1000;
+      const ease = 1 - Math.exp(-dt / 70);
+      phi += (toPhi - phi) * ease;
+      theta += (toTheta - theta) * ease;
       globe.update({ phi, theta });
-      if (visible && ((spin && !held && !pinned.current) || drag)) raf = requestAnimationFrame(frame);
+      const settling = Math.abs(toPhi - phi) + Math.abs(toTheta - theta) > 1e-4;
+      if (visible && ((spin && free) || drag || settling)) raf = requestAnimationFrame(frame);
     };
     const start = () => { if (!raf && visible) { last = 0; raf = requestAnimationFrame(frame); } };
     kick.current = start;
@@ -107,15 +114,15 @@ function Globe({ items }) {
     };
 
     const down = (e) => {
-      drag = { x: e.clientX, y: e.clientY, phi, theta };
+      drag = { x: e.clientX, y: e.clientY, phi: toPhi, theta: toTheta };
       area.setPointerCapture(e.pointerId);
       area.classList.add('drag');
       start();
     };
     const move = (e) => {
       if (!drag) return;
-      phi = drag.phi + (e.clientX - drag.x) / 160;
-      theta = Math.max(-0.6, Math.min(0.9, drag.theta + (e.clientY - drag.y) / 320));
+      toPhi = drag.phi + (e.clientX - drag.x) / 160;
+      toTheta = Math.max(-0.6, Math.min(0.9, drag.theta + (e.clientY - drag.y) / 320));
     };
     const up = (e) => {
       if (drag && e.pointerType !== 'mouse' && Math.hypot(e.clientX - drag.x, e.clientY - drag.y) < 8) {

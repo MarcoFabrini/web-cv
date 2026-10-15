@@ -1,6 +1,11 @@
 node_modules/
 dist/
 .lando/
+public/content/*.png
+public/content/*.jpg
+public/content/*.jpeg
+public/content/*.webp
+public/content/*.pdf
 .env
 public/content/*
 !public/content/.gitkeep
