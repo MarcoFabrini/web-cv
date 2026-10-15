@@ -235,10 +235,70 @@
       }
     ]
   },
+  "work": {
+    "title": {
+      "it": "Progetti realizzati",
+      "en": "Work projects"
+    },
+    "intro": {
+      "it": "Progetti seguiti per i clienti, descritti senza nomi: problema, ruolo e tecnologie.",
+      "en": "Client projects described without names: problem, role and technologies."
+    },
+    "items": [
+      {
+        "title": {
+          "it": "Piattaforma di prenotazioni",
+          "en": "Booking platform"
+        },
+        "sector": {
+          "it": "Turismo",
+          "en": "Travel"
+        },
+        "year": 2025,
+        "role": {
+          "it": "Lead full-stack",
+          "en": "Full-stack lead"
+        },
+        "description": {
+          "it": "Prenotazioni e pagamenti online per una rete di strutture, con pannello di gestione per lo staff.",
+          "en": "Online bookings and payments for a network of venues, with a management panel for staff."
+        },
+        "tags": [
+          "React",
+          "Node.js",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "title": {
+          "it": "Tracciamento spedizioni",
+          "en": "Shipment tracking"
+        },
+        "sector": {
+          "it": "Logistica",
+          "en": "Logistics"
+        },
+        "year": 2024,
+        "role": {
+          "it": "Sviluppo backend",
+          "en": "Backend development"
+        },
+        "description": {
+          "it": "API e notifiche in tempo reale per seguire le spedizioni dal porto alla consegna.",
+          "en": "API and real-time notifications to follow shipments from port to delivery."
+        },
+        "tags": [
+          "Node.js",
+          "Docker",
+          "Cloud"
+        ]
+      }
+    ]
+  },
   "projects": {
     "title": {
-      "it": "Progetti",
-      "en": "Projects"
+      "it": "Progetti personali",
+      "en": "Side projects"
     },
     "all": {
       "it": "Tutti",
@@ -605,6 +665,10 @@
       "experience": {
         "it": "Esperienza",
         "en": "Experience"
+      },
+      "work": {
+        "it": "Lavori",
+        "en": "Work"
       },
       "projects": {
         "it": "Progetti",

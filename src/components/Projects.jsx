@@ -4,7 +4,7 @@ import { reduceMotion } from '../hooks.js';
 import Reveal from './Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 
-function Card({ item, index }) {
+export function Card({ item, index }) {
   const { t, ui } = useLang();
   const link = safeUrl(item.link), repo = safeUrl(item.repo);
 
@@ -19,8 +19,9 @@ function Card({ item, index }) {
 
   return (
     <Reveal as="article" className="card" delay={(index % 3) * 0.1} onPointerMove={move} onPointerLeave={leave}>
-      <div className="c-top"><span className="c-no">{String(index + 1).padStart(2, '0')}</span><span>{item.year}</span></div>
-      <h3>{item.title}</h3>
+      <div className="c-top"><span className="c-no">{String(index + 1).padStart(2, '0')}</span><span>{[t(item.sector), item.year].filter(Boolean).join(' · ')}</span></div>
+      <h3>{t(item.title)}</h3>
+      {item.role && <p className="c-role">{t(item.role)}</p>}
       <p>{t(item.description)}</p>
       <div className="tags">{(item.tags ?? []).map((g) => <span key={g} className="tag">{g}</span>)}</div>
       {(link || repo) && (
@@ -50,7 +51,7 @@ export default function Projects({ data, n }) {
         ))}
       </Reveal>
       <div className="grid">
-        {p.items.map((it, i) => (filter === '*' || it.tags?.includes(filter)) && <Card key={it.title} item={it} index={i} />)}
+        {p.items.map((it, i) => (filter === '*' || it.tags?.includes(filter)) && <Card key={i} item={it} index={i} />)}
       </div>
     </section>
   );

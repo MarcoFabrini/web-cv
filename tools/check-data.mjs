@@ -61,6 +61,15 @@ if (data.ai) {
   for (const path of ['ai.tools', 'ai.practices']) if (!Array.isArray(get(path))) errors.push(`${path}: manca o non è array`);
 }
 
+if (data.work) {
+  if (!text$(data.work.title)) errors.push('work.title: manca o non è testo o {it, en}');
+  if (!Array.isArray(data.work.items)) errors.push('work.items: manca o non è array');
+  for (const [i, item] of (data.work.items ?? []).entries()) {
+    for (const k of ['title', 'description']) if (!text$(item?.[k])) errors.push(`work.items[${i}].${k}: manca o non è testo o {it, en}`);
+  }
+}
+if (data.work && !data.ui?.nav?.work) errors.push('ui.nav.work: manca, serve per la voce di menu della sezione work');
+
 for (const [key, env] of [['palette', 'PALETTE'], ['background', 'BACKGROUND']]) {
   if (data.meta?.[key] !== undefined) warnings.push(`meta.${key}: non è più usato, imposta ${env} in .env`);
 }

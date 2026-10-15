@@ -6,6 +6,7 @@ import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Experience from './components/Experience.jsx';
 import Projects from './components/Projects.jsx';
+import Work from './components/Work.jsx';
 import Ai from './components/Ai.jsx';
 import Skills from './components/Skills.jsx';
 import Education from './components/Education.jsx';
@@ -81,7 +82,7 @@ export default function App() {
   if (error) return <pre style={{ padding: '2rem', whiteSpace: 'pre-wrap' }}>Errore caricamento dati / Data load error:{'\n'}{error.message}</pre>;
   if (!data) return null;
 
-  const sections = SECTIONS.filter((s) => s !== 'ai' || data.ai);
+  const sections = SECTIONS.filter((s) => (s !== 'ai' || data.ai) && (s !== 'work' || data.work));
   const num = (s) => sections.indexOf(s) + 1;
   const toggleLang = () => setLang(lang === 'it' ? 'en' : 'it');
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -117,6 +118,7 @@ export default function App() {
         <Hero data={data} />
         <About data={data} n={num('about')} />
         <Experience data={data} n={num('experience')} />
+        {data.work && <Work data={data} n={num('work')} />}
         <Projects data={data} n={num('projects')} />
         {data.ai && <Ai data={data} n={num('ai')} />}
         <Skills data={data} n={num('skills')} />

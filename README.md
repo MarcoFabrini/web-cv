@@ -14,7 +14,8 @@ cp public/content/data.example.json public/content/data.json
 ```
 Tutti i tuoi contenuti stanno in `public/content/` (non versionata, tranne l'esempio: `data.example.json` e la cartella `example/`):
 - Testi: `data.json`. I campi tradotti sono `{ "it": "...", "en": "..." }`. Senza `data.json` il sito usa l'esempio.
-- Foto/avatar (PNG trasparente): `avatar.png`, poi `meta.avatar: "content/avatar.png"`.
+- Foto (PNG o WebP con sfondo trasparente, meglio verticale e ritagliata in basso): per esempio `avatar.webp`, poi `meta.avatar: "content/avatar.webp"`. Su desktop sta a destra e appoggia sul fondo della prima schermata; su telefono sta sotto il nome. Una larghezza di circa 900 px basta.
+- Progetti realizzati (facoltativo): `work: { "title", "intro", "items": [{ "title", "sector", "year", "role", "description", "tags" }] }` e la voce di menu `ui.nav.work`. Serve per descrivere i progetti seguiti per i clienti senza nomi né link. Senza `work` la sezione non compare. I progetti personali, con link e repository, restano in `projects`.
 - CV in PDF: `curriculum.pdf` (campo `meta.cv`). Se il file manca, il pulsante non compare.
 - Anteprima LinkedIn/social: immagine 1200×627 `og.png`, campo `meta.ogImage`.
 - Loghi delle competenze (globo nella sezione Competenze): un file SVG o PNG per competenza in `content/skills/`, poi `skills.items: [{ "name": "PHP", "logo": "content/skills/php.svg", "level": 3 }]`. `level` (da 1 a 5, facoltativo) compare come punti sotto il nome quando passi sopra il logo. I loghi vengono mostrati in un solo colore, quello del testo della palette. Senza `logo`, o se il file manca, sul globo compare il nome. Loghi pronti (CC0): [Simple Icons](https://simpleicons.org). L'esempio usa i loghi in `content/example/skills/`. Un logo largo (scritta orizzontale) diventa una pillola; usa un'immagine con sfondo trasparente.
@@ -110,7 +111,8 @@ cp public/content/data.example.json public/content/data.json
 ```
 All your content lives in `public/content/` (not versioned, except the example: `data.example.json` and the `example/` folder):
 - Text: `data.json`. Translated fields are `{ "it": "...", "en": "..." }`. Without `data.json` the site falls back to the example.
-- Photo/avatar (transparent PNG): `avatar.png`, then set `meta.avatar: "content/avatar.png"`.
+- Photo (PNG or WebP with a transparent background, ideally portrait and cropped at the bottom): for example `avatar.webp`, then set `meta.avatar: "content/avatar.webp"`. On desktop it sits on the right, resting on the bottom of the first screen; on phones it sits below the name. About 900 px wide is enough.
+- Work projects (optional): `work: { "title", "intro", "items": [{ "title", "sector", "year", "role", "description", "tags" }] }` plus the menu entry `ui.nav.work`. Use it to describe client projects without names or links. Without `work` the section is hidden. Personal projects, with links and repositories, stay in `projects`.
 - PDF résumé: `curriculum.pdf` (`meta.cv` field). If the file is missing, the button is hidden.
 - LinkedIn/social preview: 1200×627 image `og.png`, `meta.ogImage` field.
 - Skill logos (globe in the Skills section): one SVG or PNG file per skill in `content/skills/`, then `skills.items: [{ "name": "PHP", "logo": "content/skills/php.svg", "level": 3 }]`. `level` (1 to 5, optional) shows as dots under the name when you hover the logo. Logos are shown in a single color, the palette's text color. Without `logo`, or if the file is missing, the globe shows the name. Ready-made logos (CC0): [Simple Icons](https://simpleicons.org). The example uses the logos in `content/example/skills/`. A wide logo (horizontal wordmark) becomes a pill; use an image with a transparent background.

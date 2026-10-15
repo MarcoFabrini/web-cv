@@ -11,24 +11,23 @@ export default function Hero({ data }) {
   const [badAvatar, setBadAvatar] = useState(null);
   const cv = t(meta.cv);
   const cvOk = useFileExists(cv);
+  const photo = meta.avatar && meta.avatar !== badAvatar;
   return (
     <div id="top">
-      <section className="hero wrap">
+      <section className={`hero wrap${photo ? ' has-photo' : ''}`}>
         {meta.available && <div className="badge"><span className="dot" />{ui('available')}</div>}
         <div className="hero-top">
-          <div>
-            <p className="greet">{t(hero.greeting)}</p>
-            <h1 className="name" aria-label={meta.name}>
-              <span>{first}</span>
-              <span className="l2">{rest.join(' ')}</span>
-            </h1>
-          </div>
-          {meta.avatar && meta.avatar !== badAvatar && (
-            <div className="avatar">
-              <img src={meta.avatar} alt={meta.name} width="340" height="340" onError={() => setBadAvatar(meta.avatar)} />
-            </div>
-          )}
+          <p className="greet">{t(hero.greeting)}</p>
+          <h1 className="name" aria-label={meta.name}>
+            <span>{first}</span>
+            <span className="l2">{rest.join(' ')}</span>
+          </h1>
         </div>
+        {photo && (
+          <div className="avatar">
+            <img src={meta.avatar} alt={meta.name} width="900" height="1342" fetchPriority="high" onError={() => setBadAvatar(meta.avatar)} />
+          </div>
+        )}
         <p className="role"><span className="pre">&gt; </span><span>{typed}</span><span className="caret" /></p>
         <p className="tagline">{t(hero.tagline)}</p>
         <div className="cta">
