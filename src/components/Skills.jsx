@@ -7,7 +7,6 @@ import SectionHead from './SectionHead.jsx';
 
 const GOLDEN = Math.PI * (3 - Math.sqrt(5));
 const DEG = 180 / Math.PI;
-const anchors = typeof CSS !== 'undefined' && CSS.supports('anchor-name', '--a');
 
 const skillList = (skills) => skills.items ?? (skills.groups ?? []).flatMap((g) => g.items ?? []);
 
@@ -15,6 +14,11 @@ const spread = (n) => Array.from({ length: n }, (_, i) => {
   const y = 0.8 * (1 - (2 * i + 1) / n);
   return [Math.asin(y) * DEG, ((i * GOLDEN * DEG) % 360) - 180];
 });
+
+const point = ([lat, lng]) => {
+  const a = lat / DEG, b = lng / DEG - Math.PI, c = Math.cos(a) * 0.82;
+  return [-c * Math.cos(b), Math.sin(a) * 0.82, c * Math.sin(b)];
+};
 
 function rgb(name) {
   const probe = document.createElement('i');
@@ -57,7 +61,7 @@ function Logo({ item, i, on }) {
   const ok = ratio > 0;
   return (
     <span className={`globe-logo${ok ? (ratio > 1.6 ? ' wide' : '') : ' txt'}${on ? ' on' : ''}`} data-name={item.name} data-i={i} aria-hidden="true"
-      style={{ '--a': `--cobe-sk${i}`, '--v': `var(--cobe-visible-sk${i}, 0)`, '--logo': ok ? `url("${src}")` : undefined, '--r': ratio }}>
+      style={{ '--logo': ok ? `url("${src}")` : undefined, '--r': ratio }}>
       {!ok && item.name}
       <span className="globe-tip"><b>{item.name}</b>{item.level > 0 && <Dots level={item.level} />}</span>
     </span>
@@ -83,14 +87,28 @@ function Globe({ items }) {
     el.append(canvas);
     const spin = reduceMotion() ? 0 : 0.18;
     let phi = 0, theta = 0.2, drag = null, held = false, raf = 0, last = 0, visible = false;
-    let toPhi = phi, toTheta = theta;
+    let toPhi = phi, toTheta = theta, size = el.clientWidth || 1;
+    const points = spread(count).map(point);
+    const head = new Set(document.head.children);
     const globe = createGlobe(canvas, {
       devicePixelRatio: Math.min(devicePixelRatio || 1, 2),
-      width: el.clientWidth || 1, height: el.clientWidth || 1,
-      phi, theta, diffuse: 1.2, scale: 1, mapSamples: 16000, markerElevation: 0.02,
-      markers: spread(count).map((location, i) => ({ location, size: 0, id: `sk${i}` })),
+      width: size, height: size,
+      phi, theta, diffuse: 1.2, scale: 1, mapSamples: 16000, markers: [],
       ...colors(),
     });
+    [...document.head.children].filter((n) => n.tagName === 'STYLE' && !head.has(n)).forEach((n) => n.remove());
+
+    const place = () => {
+      const cp = Math.cos(phi), sp = Math.sin(phi), ct = Math.cos(theta), st = Math.sin(theta);
+      area.querySelectorAll('.globe-logo').forEach((logo, i) => {
+        if (!points[i]) return;
+        const [x, y, z] = points[i];
+        const c = cp * x + sp * z, s = sp * st * x + ct * y - cp * st * z;
+        const front = -sp * ct * x + st * y + cp * ct * z >= 0 || c * c + s * s >= 0.64;
+        logo.style.translate = `calc(${((c + 1) / 2 * size).toFixed(1)}px - 50%) calc(${((1 - s) / 2 * size).toFixed(1)}px - 50%)`;
+        if (logo.hasAttribute('data-front') !== front) logo.toggleAttribute('data-front', front);
+      });
+    };
 
     const frame = (now) => {
       raf = 0;
@@ -98,10 +116,11 @@ function Globe({ items }) {
       last = now;
       const free = !drag && !held && !pinned.current;
       if (free) toPhi += spin * dt / 1000;
-      const ease = 1 - Math.exp(-dt / 70);
+      const ease = drag?.touch ? 1 : 1 - Math.exp(-dt / 70);
       phi += (toPhi - phi) * ease;
       theta += (toTheta - theta) * ease;
       globe.update({ phi, theta });
+      place();
       const settling = Math.abs(toPhi - phi) + Math.abs(toTheta - theta) > 1e-4;
       if (visible && ((spin && free) || drag || settling)) raf = requestAnimationFrame(frame);
     };
@@ -114,7 +133,7 @@ function Globe({ items }) {
     };
 
     const down = (e) => {
-      drag = { x: e.clientX, y: e.clientY, phi: toPhi, theta: toTheta };
+      drag = { x: e.clientX, y: e.clientY, phi: toPhi, theta: toTheta, touch: e.pointerType !== 'mouse' };
       area.setPointerCapture(e.pointerId);
       area.classList.add('drag');
       start();
@@ -142,7 +161,7 @@ function Globe({ items }) {
 
     const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; start(); });
     io.observe(el);
-    const ro = new ResizeObserver(() => { const s = el.clientWidth || 1; globe.update({ width: s, height: s }); });
+    const ro = new ResizeObserver(() => { size = el.clientWidth || 1; globe.update({ width: size, height: size }); place(); });
     ro.observe(el);
     const mo = new MutationObserver(() => globe.update(colors()));
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'data-palette'] });
@@ -178,8 +197,8 @@ export default function Skills({ data, n }) {
     <section className="s wrap" id="skills">
       <SectionHead n={n} title={t(s.title)} />
       <Reveal className="skills">
-        {anchors && items.length > 0 && <Globe items={items} />}
-        <ul className={anchors ? 'sr' : 'skill-chips'}>{items.map((it, i) => <li key={i}>{label(it)}</li>)}</ul>
+        {items.length > 0 && <Globe items={items} />}
+        <ul className="sr">{items.map((it, i) => <li key={i}>{label(it)}</li>)}</ul>
       </Reveal>
     </section>
   );
